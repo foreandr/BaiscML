@@ -6,25 +6,24 @@ import matplotlib.pyplot as plt
 from sklearn import linear_model  # SCIKIT LEARN LIBRARY
 import math
 
-# column_names = ['area', 'bedrooms', 'age', 'price', 'Unnamed']
-df = pd.read_csv("testfile.csv")
-# print(df)
-df = df.loc[:, ~df.columns.str.contains('^Unnamed')]  # rRemove NAN column
-# print(df)
 
-df.columns = df.columns.str.strip()  # Something to do with whitespace
+def gradient_descent(x, y):
+    m_curr = b_curr = 0
+    iterations = 10000
+    n = len(x)
+    learning_rate = 0.07  # CAN CHANGE
+    for i in range(iterations):
+        y_predicted = m_curr * x + b_curr
+        cost = 1/n * sum([val**2 for val in (y - y_predicted)])
+        md = -(2 / n) * sum(x * (y - y_predicted))
+        bd = -(2 / n) * sum((y - y_predicted))
+        m_curr = m_curr - learning_rate * md
+        b_curr = b_curr - learning_rate * bd
 
-med_bed = math.floor(df.bedrooms.median())  # GetMedian
-# print(med_bed)
+        print("m {}, b {}, cost {} iteration {}".format(m_curr, b_curr, cost, i))
 
-# Assign med to ALL empty spots in bedroom
-df.bedrooms = df.bedrooms.fillna(med_bed)  # doesn't work.
-#print(df)
-
-reg = linear_model.LinearRegression()
-reg.fit(df[['area','bedrooms','age']], df.price)
-#print(reg.coef_) # all coefficients
-# print(reg.intercept_) # y intercept
-print(reg.predict([[2600, 3, 20]]))
-
-#UserWarning: X does not have valid feature names, but LinearRegression was fitted with feature names DOESN'T MATTER
+# wanted value is 2 and 3
+#y = 2(x) + 3
+x = np.array([1, 2, 3, 4, 5])
+y = np.array([5, 7, 9, 11, 13])
+gradient_descent(x, y)
