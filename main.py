@@ -1,21 +1,30 @@
-#import tensorflow
+# import tensorflow
 import torch
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import linear_model # SCIKIT LEARN LIBRARY
+from sklearn import linear_model  # SCIKIT LEARN LIBRARY
+import math
 
-# LOAD CSV IN PANDAS DATAFRAME
+# column_names = ['area', 'bedrooms', 'age', 'price', 'Unnamed']
 df = pd.read_csv("testfile.csv")
-#first_column = df.iloc[:, 0] # MAKES NO ESNE?
-second_column = df.iloc[:, 1]
-# Plot scatterpot
+# print(df)
+df = df.loc[:, ~df.columns.str.contains('^Unnamed')]  # rRemove NAN column
+# print(df)
 
+df.columns = df.columns.str.strip()  # Something to do with whitespace
 
-plt.xlabel("")
-plt.ylabel("")
-plt.scatter(df.area, second_column, color ='red') #
-plt.show()
+med_bed = math.floor(df.bedrooms.median())  # GetMedian
+# print(med_bed)
 
-reg = linear_model.LinearRegression() # object for linear regression
-reg.fit(df[['area']], second_column) # TRAIN linear regression model
+# Assign med to ALL empty spots in bedroom
+df.bedrooms = df.bedrooms.fillna(med_bed)  # doesn't work.
+#print(df)
+
+reg = linear_model.LinearRegression()
+reg.fit(df[['area','bedrooms','age']], df.price)
+#print(reg.coef_) # all coefficients
+# print(reg.intercept_) # y intercept
+print(reg.predict([[2600, 3, 20]]))
+
+#UserWarning: X does not have valid feature names, but LinearRegression was fitted with feature names DOESN'T MATTER
