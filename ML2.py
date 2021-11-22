@@ -2,6 +2,9 @@ import pandas as pd
 from sklearn import linear_model  # SCIKIT LEARN LIBRARY
 import math
 import pickle
+
+#JOBLIB MIGHT BE BETTER WITH BIG NUMPY ARRAYS
+
 # column_names = ['area', 'bedrooms', 'age', 'price', 'Unnamed']
 df = pd.read_csv("testfile.csv")
 # print(df)
