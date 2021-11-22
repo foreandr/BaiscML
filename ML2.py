@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn import linear_model  # SCIKIT LEARN LIBRARY
 import math
-
+import pickle
 # column_names = ['area', 'bedrooms', 'age', 'price', 'Unnamed']
 df = pd.read_csv("testfile.csv")
 # print(df)
@@ -17,10 +17,16 @@ med_bed = math.floor(df.bedrooms.median())  # GetMedian
 df.bedrooms = df.bedrooms.fillna(med_bed)  # doesn't work.
 #print(df)
 
-reg = linear_model.LinearRegression()
-reg.fit(df[['area','bedrooms','age']], df.price)
+model = linear_model.LinearRegression()
+model.fit(df[['area','bedrooms','age']], df.price)
 #print(reg.coef_) # all coefficients
 # print(reg.intercept_) # y intercept
-print(reg.predict([[2600, 3, 20]]))
+print(model.predict([[2600, 3, 20]]))
 
+with open('model_picke', 'wb') as f: # DUMPD pickle python model It's a binary file # WRITE BINARY
+    pickle.dump(model, f)
+
+with open('model_picke', 'rb') as f: # READBINARY
+    model2 = pickle.load(f)
+print(model2.predict([[2600, 3, 20]]))
 #UserWarning: X does not have valid feature names, but LinearRegression was

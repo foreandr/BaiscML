@@ -1,1 +1,6 @@
 Line of best fit
+
+STEP 1.
+Train Model
+STEP 2.
+Predict Something
