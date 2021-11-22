@@ -17,9 +17,15 @@ dummies = pd.get_dummies((df.town))
 
 # Put dataframes togehter
 merged = pd.concat([df, dummies], axis='columns')
-print(merged)
+#print(merged)
 
 # Drop original town column
 # DROP 1 DUMMY VARIABLE ALWAYS ??
-final = merged.drop(['town', 'robbinsville'], axis='columns')
-print(final)
+final = merged.drop(['town', '\'robbinsville\''], axis='columns') # NOTICE CHANGE IN SECOND TEST
+#print(final)
+
+model = linear_model.LinearRegression()
+x = final.drop('price', axis='columns')
+x = x.loc[:, ~df.columns.str.contains('^Unnamed')]  # rRemove NAN column
+y = final.price
+model.fit(x, y)
