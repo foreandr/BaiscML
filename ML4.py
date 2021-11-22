@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn import linear_model  # SCIKIT LEARN LIBRARY
 
 
-df = pd.read_csv("testfile2.csv")
+df = pd.read_csv("Datasets/testfile2.csv")
 df.columns = df.columns.str.strip()
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]  # Remove NAN column
 # print(df)

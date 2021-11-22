@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-df = pd.read_csv("testfile2.csv")
+df = pd.read_csv("Datasets/testfile2.csv")
 df.columns = df.columns.str.strip()
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 dummies = pd.get_dummies((df.town))

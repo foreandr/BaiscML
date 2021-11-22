@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 # LOAD CSV IN PANDAS DATAFRAME
 
-df = pd.read_csv("testfile.csv")
+df = pd.read_csv("Datasets/testfile.csv")
 #first_column = df.iloc[:, 0] # MAKES NO ESNE?
 #second_column = df.iloc[:, 1]
 df.columns = df.columns.str.strip()
