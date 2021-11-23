@@ -16,7 +16,14 @@ ACTIVATION FUNCTIONS:
 
 LOSS FUNCTIONS:
     1. sparse_categorical_crossentropy
-    2. binary_crossentropy
+    2. binary_crossentropy - LOG LOSS
     3. categorical_crossentropy
     4. mean_absolute_error
     5. mean_squared_error
+
+Back propogation
+    - going back after an epoch and adjusting the weights of the nodes
+    - learning weight is how to weights change
+
+    BATCH GRADIENT DESCENT
+    STOCHASTIC GRADIENT DESCENT
