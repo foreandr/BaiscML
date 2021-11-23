@@ -22,7 +22,7 @@ emails = [
     "Hello Andre, it's nice to see you again. I sure hope you'll get in touch with me about this personal email",
     "20% OFF FREE FLESHLIGHTS FOR EVERYBODY CALL NOW!!"
 ] # why didn't I have to change this to pass it in ?
-emails_count = V.transform(emails) # not sure what transform does here
+emails_count = V.transform(emails) # not sure what transform does here # Turns it into something readable with predict
 print(model.predict(emails_count)) # Accurately guesses
 x_test_count_matrix = V.transform(x_test)
 print(model.score(x_test_count_matrix, y_test)) # 98%
