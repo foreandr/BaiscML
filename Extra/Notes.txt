@@ -4,3 +4,5 @@ STEP 1.
 Train Model
 STEP 2.
 Predict Something
+
+Put spam detecter on the website
