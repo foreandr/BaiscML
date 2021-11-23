@@ -14,23 +14,14 @@ from sklearn.metrics import confusion_matrix
 from sklearn.datasets import load_iris
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
-
+from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold # Litlte bit better separating our things, in a uniform way
+from sklearn.model_selection import cross_val_score
 import seaborn as sn
 import math
 # import yahoo_fin.stock_info as si
 # from yahoo_fin.stock_info import get_data
 import yfinance
-
-
-digits = load_digits()
-
-df = pd.DataFrame(digits.data)
-df['target'] = digits.target
-
-x_train, x_test, y_train, y_test = train_test_split(df.drop(['target'],axis='columns'), df['target'], test_size=0.2)
-model = RandomForestClassifier(n_estimators=100) # can change to all kinds of things
-model.fit(x_train, y_train)
-print(model.score(x_test, y_test))
 
 
 

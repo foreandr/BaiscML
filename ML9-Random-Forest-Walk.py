@@ -5,7 +5,6 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 digits = load_digits()
-
 df = pd.DataFrame(digits.data)
 df['target'] = digits.target
 
