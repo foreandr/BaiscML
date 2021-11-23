@@ -17,6 +17,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import KFold
 from sklearn.model_selection import StratifiedKFold # Litlte bit better separating our things, in a uniform way
 from sklearn.model_selection import cross_val_score
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import MinMaxScaler
+
 import seaborn as sn
 import math
 # import yahoo_fin.stock_info as si
