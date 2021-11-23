@@ -29,6 +29,3 @@ import math
 # from yahoo_fin.stock_info import get_data
 import yfinance
 from mpl_toolkits import mplot3d
-
-df = pd.read_csv('Datasets/dataset6.csv')
-print(df.head())
