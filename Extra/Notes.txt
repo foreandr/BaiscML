@@ -8,8 +8,15 @@ Predict Something
 Put spam detecter on the website
 
 ACTIVATION FUNCTIONS:
-    1. STEP FUNCTION
-    2. SIGMODI FUNCTION
+    1. STEP FUNCTION _|-
+    2. SIGMOID FUNCTION
     3. TANH
     4. RELU
     5. LEAKY RELU
+
+LOSS FUNCTIONS:
+    1. sparse_categorical_crossentropy
+    2. binary_crossentropy
+    3. categorical_crossentropy
+    4. mean_absolute_error
+    5. mean_squared_error
