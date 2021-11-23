@@ -1,4 +1,4 @@
-#import tensorflow
+import tensorflow
 import sklearn.linear_model
 import torch
 import pandas as pd
@@ -27,4 +27,6 @@ import math
 # import yahoo_fin.stock_info as si
 # from yahoo_fin.stock_info import get_data
 import yfinance
+
+
 
