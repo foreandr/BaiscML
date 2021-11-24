@@ -1,2 +1,34 @@
 from spacy.pipeline import Lemmatizer
 import spacy
+
+data = {
+ "rasa_nlu_data": {
+ "common_examples":
+     [
+         {
+         "text": "Hello",
+         "intent": "greeting",
+         "entities": []
+         },
+
+         {
+         "text": "I want to know my Horoscope",
+         "intent": "get_horoscope",
+         "entities": []
+         },
+
+         {
+         "text": "Can you please tell me my horoscope?",
+         "intent": "get_horoscope",
+         "entities": []
+         },
+
+         {
+         "text": "Please subscribe me",
+         "intent": "subscription"
+         }
+    ],
+ "regex_features": [],
+ "entity_synonyms": []
+ }
+}
