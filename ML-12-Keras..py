@@ -1,1 +1,0 @@
-#minmizemean squared error
