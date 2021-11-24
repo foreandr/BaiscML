@@ -1,0 +1,15 @@
+Define the Problem
+Understand the depth and breadth of the problem:
+Data requirement brainstorming:
+Data collection:
+Text Preprocessing
+Text to feature:
+Machine learning/Deep learning:
+Insights and deployment
+
+
+Finding Similarity Between Texts !
+Cosine similarity
+Jaccard similarity
+Levenshtein distance:
+Hamming distance:
