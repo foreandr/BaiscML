@@ -1,4 +1,4 @@
-import spacy #comment
+import spacy #comment rasa
 # Load English tokenizer, tagger, parser and NER
 nlp = spacy.load("en_core_web_sm")
 doc = nlp(u'I am going to London next week for a meeting.')
