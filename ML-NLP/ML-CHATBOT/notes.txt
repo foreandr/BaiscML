@@ -1,0 +1,19 @@
+'''chatbot frameworks:
+• https://woebot.io/
+• https://qnamaker.ai/
+• https://dialogflow.com/
+• https://core.rasa.ai
+• https://wit.ai
+• https://www.luis.ai/
+• http://botkit.ai
+'''
+
+
+'''
+libraries:
+spaCy
+'''
+'''
+EXTRA SHIT
+python -m spacy download en
+'''
