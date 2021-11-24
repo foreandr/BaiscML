@@ -17,3 +17,5 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 import speech_recognition as sr
+from gtts import gTTS
+
