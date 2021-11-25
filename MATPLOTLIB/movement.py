@@ -1,26 +1,27 @@
-import numpy as np
 from tkinter import *
+
+import numpy
+import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
-import numpy as np,numpy
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm
+
 
 class LinearScaling(object):
- def __init__(self, src_range, dst_range):
-     self.src_start, src_diff = src_range[0], src_range[1] -src_range[0]
-     self.dst_start, dst_diff = dst_range[0], dst_range[1] - dst_range[0]
-     self.src_to_dst_coeff = dst_diff / src_diff
-     self.dst_to_src_coeff = src_diff / dst_diff
- def src_to_dst(self, X):
-    return (X - self.src_start) * self.src_to_dst_coeff + self.dst_start
+    def __init__(self, src_range, dst_range):
+        self.src_start, src_diff = src_range[0], src_range[1] - src_range[0]
+        self.dst_start, dst_diff = dst_range[0], dst_range[1] - dst_range[0]
+        self.src_to_dst_coeff = dst_diff / src_diff
+        self.dst_to_src_coeff = src_diff / dst_diff
 
- def dst_to_src(self, X):
-     return (X - self.dst_start) * self.dst_to_src_coeff + self.src_start
+    def src_to_dst(self, X):
+        return (X - self.src_start) * self.src_to_dst_coeff + self.dst_start
+
+    def dst_to_src(self, X):
+        return (X - self.dst_start) * self.dst_to_src_coeff + self.src_start
+
 
 class SuperShapeFrame(Frame):
-    def __init__(self, master = None):
+    def __init__(self, master=None):
         Frame.__init__(self, master)
         self.grid()
         self.m = 3
@@ -56,7 +57,6 @@ class SuperShapeFrame(Frame):
 
         self.draw_figure()
 
-
     def update_m(self):
         self.m = self.m_slider.get()
         self.refresh_figure()
@@ -78,7 +78,6 @@ class SuperShapeFrame(Frame):
         self.lines.set_ydata(r)
         self.fig.canvas.draw_idle()
 
-
     def draw_figure(self):
         self.phi = np.linspace(0, 2 * numpy.pi, 1024)
         r = supershape_radius(self.phi, 1, 1, self.m, self.n1, self.
@@ -87,6 +86,7 @@ class SuperShapeFrame(Frame):
         self.lines, = ax.plot(self.phi, r, lw=3.)
         self.fig.canvas.draw()
 
+
 def supershape_radius(phi, a, b, m, n1, n2, n3):
     theta = .25 * m * phi
     cos = np.fabs(np.cos(theta) / a) ** n2
@@ -94,6 +94,7 @@ def supershape_radius(phi, a, b, m, n1, n2, n3):
     r = (cos + sin) ** (-1. / n1)
     r /= np.max(r)
     return r
+
 
 app = SuperShapeFrame()
 app.master.title('SuperShape')
