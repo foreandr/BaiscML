@@ -19,3 +19,8 @@ from textblob import TextBlob
 import speech_recognition as sr
 from gtts import gTTS
 
+beverages = ['espresso', 'beer', 'vodka', 'wine', 'cola', 'tea']
+countries = ['Italy', 'Germany', 'Russia', 'France', 'USA', 'India']
+sports = ['soccer', 'handball', 'hockey', 'cycling', 'basketball', 'cricket']
+items = beverages + countries + sports
+

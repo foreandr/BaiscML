@@ -1,13 +1,19 @@
 Line of best fit
 
-MIGHT HAVE TO OPEN PYCHARM WITH ANACONDA
+tools:
+    WIKIDATA
+    OpenStreetMap
+    free Twitter API
+    Project Gutenberg
+    Internet Archive
+    ProgrammableWeb
+    census data
 
+MIGHT HAVE TO OPEN PYCHARM WITH ANACONDA
 PIPELINE FOR ANY DATA SCIENCE PROJECT
 1. DATASET
 2. PREDICTION? CLASSIFICATION?
 3. SUPERVISED, UNSUPERVISED, REINFORCMENT
-
-
 
 STEP 1.
 Train Model
@@ -66,3 +72,15 @@ DEEP LEARNING LIBRARIES
     - MXNet
     - Caffe
     - Lasagne
+
+NEURAL NETS
+    CONVOLUTIONAL NEURAL NETS
+        - PICK OUT FEATURES IN THE IAMGE
+        - APPLY A SMALL FUNCTION TO A PORTION OF THE IMAGE
+
+   RECURRANT NEURAL NETS
+        - sequential input, voice or text
+
+   NEURAL NET WITH GATES
+        - INPUT GATE, OUTPUT GATE, FORGET GATE
+        - A long short-term memory network (LSTM)
