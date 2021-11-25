@@ -23,14 +23,11 @@ pinned_post_comments = []
 wanted_subreddit1 = reddit.subreddit("wallstreetbets")
 count_comments = 0  # this is off by rougly 3000
 
-
-
 def getPinnedPost(subreddit_):
     for post in subreddit_.hot(limit=10):  # first n posts
         if post.stickied:  # if post pinned
             return post
     return None
-
 
 def writeToFile(list, filename):
     textfile = open(f"{filename}.txt", "w", encoding='utf-8')
