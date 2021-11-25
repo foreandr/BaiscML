@@ -3,6 +3,8 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 import nltk
 from textblob import TextBlob
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import pandas as pd
 
 
 finviz_URL = 'https://finviz.com/quote.ashx?t='
@@ -33,3 +35,5 @@ for i in amzn_rows:
     text = (i.a.text) # go through the html tag | index-><a> -> .text
     timestamp = i.td.text
     print(timestamp + ": " + text)
+
+df = pd.DataFrame()
