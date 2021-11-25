@@ -3,16 +3,14 @@ from tkinter import *
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy as np,numpy
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
 class LinearScaling(object):
  def __init__(self, src_range, dst_range):
-     self.src_start, src_diff = src_range[0], src_range[1] -
-     src_range[0]
-     self.dst_start, dst_diff = dst_range[0], dst_range[1] - dst_
-     range[0]
+     self.src_start, src_diff = src_range[0], src_range[1] -src_range[0]
+     self.dst_start, dst_diff = dst_range[0], dst_range[1] - dst_range[0]
      self.src_to_dst_coeff = dst_diff / src_diff
      self.dst_to_src_coeff = src_diff / dst_diff
  def src_to_dst(self, X):
@@ -22,41 +20,42 @@ class LinearScaling(object):
      return (X - self.dst_start) * self.dst_to_src_coeff + self.src_start
 
 class SuperShapeFrame(Frame):
-     def __init__(self, master = None):
-         Frame.__init__(self, master)
-         self.grid()
-         self.m = 3
-         self.n1 = 2
-         self.n1_scaling = LinearScaling((.1, 20), (0, 200))
-         self.n2 = 18
-         self.n2_scaling = LinearScaling((.1, 20), (0, 200))
-         self.n3 = 18
-         self.n3_scaling = LinearScaling((.1, 20), (0, 200))
-         self.fig = Figure((6, 6), dpi=80)
-         canvas = FigureCanvasTkAgg(self.fig, master=self)
-         canvas.get_tk_widget().grid(row=0, column=0, columnspan=4)
-         label = Label(self, text='M')
-         label.grid(row=1, column=1)
-         self.m_slider = Scale(self, from_=1, to=20, orient=HORIZONTAL, command=lambda i: self.update_m())
+    def __init__(self, master = None):
+        Frame.__init__(self, master)
+        self.grid()
+        self.m = 3
+        self.n1 = 2
+        self.n1_scaling = LinearScaling((.1, 20), (0, 200))
+        self.n2 = 18
+        self.n2_scaling = LinearScaling((.1, 20), (0, 200))
+        self.n3 = 18
+        self.n3_scaling = LinearScaling((.1, 20), (0, 200))
+        self.fig = Figure((6, 6), dpi=80)
+        canvas = FigureCanvasTkAgg(self.fig, master=self)
+        canvas.get_tk_widget().grid(row=0, column=0, columnspan=4)
+        label = Label(self, text='M')
+        label.grid(row=1, column=1)
+        self.m_slider = Scale(self, from_=1, to=20, orient=HORIZONTAL, command=lambda i: self.update_m())
 
-         self.m_slider.grid(row=1, column=2)
+        self.m_slider.grid(row=1, column=2)
 
-         label = Label(self, text='N1')
-         label.grid(row=2, column=1)
-         self.n1_slider = Scale(self, from_=0, to=200, orient=HORIZONTAL, command=lambda i: self.update_n1())
-         self.n1_slider.grid(row=2, column=2)
+        label = Label(self, text='N1')
+        label.grid(row=2, column=1)
+        self.n1_slider = Scale(self, from_=0, to=200, orient=HORIZONTAL, command=lambda i: self.update_n1())
+        self.n1_slider.grid(row=2, column=2)
 
-         label = Label(self, text='N2')
-         label.grid(row=3, column=1)
-         self.n2_slider = Scale(self, from_=0, to=200, orient=HORIZONTAL, command=lambda i: self.update_n2())
-         self.n2_slider.grid(row=3, column=2)
+        label = Label(self, text='N2')
+        label.grid(row=3, column=1)
+        self.n2_slider = Scale(self, from_=0, to=200, orient=HORIZONTAL, command=lambda i: self.update_n2())
+        self.n2_slider.grid(row=3, column=2)
 
-         label = Label(self, text='N3')
-         label.grid(row=4, column=1)
-         self.n3_slider = Scale(self, from_=0, to=200, orient=HORIZONTAL, command=lambda i: self.update_n3())
-         self.n3_slider.grid(row=4, column=2)
+        label = Label(self, text='N3')
+        label.grid(row=4, column=1)
+        self.n3_slider = Scale(self, from_=0, to=200, orient=HORIZONTAL, command=lambda i: self.update_n3())
+        self.n3_slider.grid(row=4, column=2)
 
-         self.draw_figure()
+        self.draw_figure()
+
 
     def update_m(self):
         self.m = self.m_slider.get()
@@ -79,6 +78,15 @@ class SuperShapeFrame(Frame):
         self.lines.set_ydata(r)
         self.fig.canvas.draw_idle()
 
+
+    def draw_figure(self):
+        self.phi = np.linspace(0, 2 * numpy.pi, 1024)
+        r = supershape_radius(self.phi, 1, 1, self.m, self.n1, self.
+                              n2, self.n3)
+        ax = self.fig.add_subplot(111, polar=True)
+        self.lines, = ax.plot(self.phi, r, lw=3.)
+        self.fig.canvas.draw()
+
 def supershape_radius(phi, a, b, m, n1, n2, n3):
     theta = .25 * m * phi
     cos = np.fabs(np.cos(theta) / a) ** n2
@@ -86,3 +94,7 @@ def supershape_radius(phi, a, b, m, n1, n2, n3):
     r = (cos + sin) ** (-1. / n1)
     r /= np.max(r)
     return r
+
+app = SuperShapeFrame()
+app.master.title('SuperShape')
+app.mainloop()
