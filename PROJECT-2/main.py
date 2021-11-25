@@ -53,7 +53,6 @@ for i in range(len(df)):
     text = (df['Text'][i])
 #    print(vader.polarity_scores(text))
 
-plt.figure(figsize=(10, 8))
 
 
 
