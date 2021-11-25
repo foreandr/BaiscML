@@ -1,0 +1,10 @@
+STEP 1.
+    FIRST GET ALL REGULAR FINANIAL DATA
+    STOP 1 WEEK BEFORE TO LOOK AT IT'S PREDICTIONS
+
+STEP 2.
+    SENTIMENT ANALYSIS OF THE ASSET ON THE MAJRO SUBREDDITS AND NEW SITES
+
+
+NOTES:
+    something like, if the month after, it's up 10% it it's classified a as a good buy
