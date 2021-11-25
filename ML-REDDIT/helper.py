@@ -1,19 +1,29 @@
 import praw
 from matplotlib import pyplot as plt
+from textblob import TextBlob
 from wordcloud import WordCloud
+wordList = []
+def getUserPass():
 
-secretKey = '' # api secret key
-personaluse = 'n0AoPEjSECmTaDAIPNH9tQ' # READ FROM FILE
+    fileObj = open("C:\\Users\\Andre\\Documents\\txt.txt", "r", encoding='utf-8')
+    words = fileObj.read().splitlines()
+    for i in words:
+        wordList.append(i)
+getUserPass()
+secretKey = wordList[0]# api secret key
+personaluse = wordList[1] # READ FROM FILE
 reddit = praw.Reddit(client_id = personaluse,
                      client_secret =secretKey,
                      user_agent="<console:HAPPY:1.0>",
-                     username = "cheatsie",
-                     password = "" # needed pass
+                     username = wordList[2],
+                     password = wordList[3] # needed pass
 )
 
 pinned_post_comments = []
 wanted_subreddit1 = reddit.subreddit("wallstreetbets")
 count_comments = 0  # this is off by rougly 3000
+
+
 
 def getPinnedPost(subreddit_):
     for post in subreddit_.hot(limit=10):  # first n posts
@@ -66,3 +76,11 @@ def printSentimentList(full_list_):
         blob = TextBlob(full_list_[i])
         if blob.sentiment.polarity > .2 or blob.sentiment.subjectivity > .2:
             print(f"Text {blob} [SENTIMENT: {blob.sentiment}")
+
+def returnSentimentList(full_list_):
+    list_ = []
+    for i in range(len(full_list_)):
+        blob = TextBlob(full_list_[i])
+        if blob.sentiment.polarity > .2 or blob.sentiment.subjectivity > .2:
+            list_.append(blob)
+    return list_
