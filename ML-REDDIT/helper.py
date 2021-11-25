@@ -2,13 +2,13 @@ import praw
 from matplotlib import pyplot as plt
 from wordcloud import WordCloud
 
-secretKey = 'JGJ0vyZ1IlApRykeTYX48rFS6_TlIQ' # api secret key
+secretKey = '' # api secret key
 personaluse = 'n0AoPEjSECmTaDAIPNH9tQ' # READ FROM FILE
 reddit = praw.Reddit(client_id = personaluse,
                      client_secret =secretKey,
                      user_agent="<console:HAPPY:1.0>",
                      username = "cheatsie",
-                     password = "77734381" # needed pass
+                     password = "" # needed pass
 )
 
 pinned_post_comments = []
