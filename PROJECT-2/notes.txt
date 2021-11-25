@@ -1,4 +1,13 @@
 FINVIZ
 BEAUTIFUL SOUP
+GENERALIZE
 
 #APPLY TWO NLP SENTIMENT ANALYSIS ON IT
+#nltk.download('vader_lexicon')
+
+VADER SCORES MEANINGS:
+    negative
+    neutral
+    positive
+    compound
+     normalizing above scores - standardised to range between -1 and 1. I CAPS LOG AND PUNCTUATION HAVE AN EFFECT
